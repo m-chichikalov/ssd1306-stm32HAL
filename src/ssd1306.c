@@ -170,11 +170,11 @@ char ssd1306_WriteString(char* str, FontDef Font, SSD1306_COLOR color) {
 void ssd1306_WriteUnsignedInt(uint32_t binaryInput, FontDef Font, SSD1306_COLOR color) {
 	char ch;
 	if (binaryInput <= 0x05f5e0ff) {
-		while (binaryInput > 0) {
+		do {
 			  ch =  (char)((binaryInput % 10) + 0x30);
 			  binaryInput /= 10;
 			  ssd1306_WriteChar(ch, Font, color, _Right);
-		   }
+		} while (binaryInput > 0);
 	}
 }
 
